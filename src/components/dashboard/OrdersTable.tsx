@@ -21,59 +21,109 @@ const orders = [
 
 export function OrdersTable() {
   return (
-    <Card className="bg-white shadow-sm">
-      <CardHeader>
-        <CardTitle className="text-xl font-semibold">Orders</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="font-semibold">No.</TableHead>
-              <TableHead className="font-semibold">Name</TableHead>
-              <TableHead className="font-semibold">Boxes Ordered</TableHead>
-              <TableHead className="font-semibold">Total Amount</TableHead>
-              <TableHead className="font-semibold">Paid</TableHead>
-              <TableHead className="font-semibold">Status</TableHead>
-              <TableHead className="font-semibold">Action</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {orders.map((order) => (
-              <TableRow key={order.id} className="hover:bg-gray-50">
-                <TableCell className="font-medium">{order.id}</TableCell>
-                <TableCell>{order.name}</TableCell>
-                <TableCell>{order.boxes}</TableCell>
-                <TableCell>{order.amount}</TableCell>
-                <TableCell>
-                  <Badge 
-                    variant={order.paid === "Yes" ? "default" : "destructive"}
-                    className={order.paid === "Yes" ? "bg-green-100 text-green-800" : ""}
+    <section aria-labelledby="orders-heading">
+      <Card className="bg-white shadow-sm">
+        <CardHeader>
+          <CardTitle id="orders-heading" className="text-xl font-semibold text-gray-900">
+            Orders
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <Table role="table" aria-labelledby="orders-heading">
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-semibold text-gray-900" scope="col">
+                    No.
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900" scope="col">
+                    Name
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900" scope="col">
+                    Boxes Ordered
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900" scope="col">
+                    Total Amount
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900" scope="col">
+                    Paid
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900" scope="col">
+                    Status
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900" scope="col">
+                    Action
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {orders.map((order) => (
+                  <TableRow 
+                    key={order.id} 
+                    className="hover:bg-gray-50 focus-within:bg-gray-50"
                   >
-                    {order.paid}
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
-                    {order.status}
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <Button variant="link" className="text-blue-600 hover:text-blue-800 p-0">
-                    Details
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        
-        <div className="mt-4 text-center">
-          <Button variant="link" className="text-blue-600 hover:text-blue-800">
-            + See More
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+                    <TableCell className="font-medium text-gray-900">
+                      {order.id}
+                    </TableCell>
+                    <TableCell className="text-gray-900">
+                      {order.name}
+                    </TableCell>
+                    <TableCell className="text-gray-900">
+                      <span aria-label={`${order.boxes} boxes`}>
+                        {order.boxes}
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-gray-900">
+                      {order.amount}
+                    </TableCell>
+                    <TableCell>
+                      <Badge 
+                        variant={order.paid === "Yes" ? "default" : "destructive"}
+                        className={
+                          order.paid === "Yes" 
+                            ? "bg-green-700 text-white hover:bg-green-800" 
+                            : "bg-red-700 text-white hover:bg-red-800"
+                        }
+                        aria-label={`Payment status: ${order.paid}`}
+                      >
+                        {order.paid}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge 
+                        variant="secondary" 
+                        className="bg-yellow-600 text-white hover:bg-yellow-700"
+                        aria-label={`Order status: ${order.status}`}
+                      >
+                        {order.status}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Button 
+                        variant="link" 
+                        className="text-blue-700 hover:text-blue-900 focus:text-blue-900 p-0 underline font-medium"
+                        aria-label={`View details for order ${order.id} by ${order.name}`}
+                      >
+                        Details
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+          
+          <div className="mt-4 text-center">
+            <Button 
+              variant="link" 
+              className="text-blue-700 hover:text-blue-900 focus:text-blue-900 underline font-medium"
+              aria-label="Load more orders"
+            >
+              + See More
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </section>
   );
 }
