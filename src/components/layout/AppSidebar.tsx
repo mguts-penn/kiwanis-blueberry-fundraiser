@@ -26,23 +26,23 @@ const navigationItems = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="w-60 bg-slate-800 border-r-0">
+    <Sidebar className="w-60 bg-[#0a2240] border-r-0">
       <SidebarContent>
         {/* Kiwanis Header */}
-        <div className="p-6 border-b border-slate-700">
+        <div className="p-6 border-b border-[#1e3a5c]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">K</span>
+            <div className="w-10 h-10 bg-[#fcc646] rounded-full flex items-center justify-center">
+              <span className="text-[#0a2240] font-bold text-lg">K</span>
             </div>
             <div>
               <h2 className="text-white font-semibold text-lg">Kiwanis</h2>
-              <p className="text-slate-300 text-sm">Club of Arlington, VA</p>
+              <p className="text-gray-300 text-sm">Club of Arlington, VA</p>
             </div>
           </div>
         </div>
 
         {/* Event Title */}
-        <div className="p-6 border-b border-slate-700">
+        <div className="p-6 border-b border-[#1e3a5c]">
           <h3 className="text-white font-medium">2022 Blueberry Fundraiser</h3>
         </div>
 
@@ -55,8 +55,8 @@ export function AppSidebar() {
                   <SidebarMenuButton 
                     asChild
                     className={`
-                      w-full justify-start px-6 py-3 text-left hover:bg-slate-700 transition-colors
-                      ${item.isActive ? 'bg-slate-700 text-white' : 'text-slate-300'}
+                      w-full justify-start px-6 py-3 text-left hover:bg-[#1e3a5c] transition-colors
+                      ${item.isActive ? 'bg-[#1e3a5c] text-white' : 'text-gray-300'}
                     `}
                   >
                     <button>
